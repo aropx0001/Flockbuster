@@ -1,0 +1,25 @@
+﻿@page
+@model Flockbuster.Pages.Sign_upModel
+@{
+}
+
+<div class="SignUpOuterBox">
+    <div class="SignUpBox">
+        <form method="post">
+            <h5 style="text-align:center;">Account creation</h5>
+            <label for="uname"><b>Username</b></label>
+            <input asp-for="@Model.Username" placeholder="Enter Username" required />
+
+            <label for="psw"><b>Password</b></label>
+            <input asp-for="Password" type="password" placeholder="Enter Password" required />
+
+            <label for="psw"><b>Firstname</b></label>
+            <input asp-for="Firstname" placeholder="Enter Firstname" required />
+
+            <label for="psw"><b>Lastname</b></label>
+            <input asp-for="Lastname" placeholder="Enter Lastname" required />
+
+            <button type="submit" class="SignUpConfirmBtn">Confirm</button>
+        </form>
+    </div>
+</div>

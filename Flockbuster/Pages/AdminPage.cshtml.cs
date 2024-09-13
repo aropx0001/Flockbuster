@@ -3,10 +3,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Flockbuster.Pages
 {
-    public class IndexModel : PageModel
+    public class AdminPageModel : PageModel
     {
         public void OnGet()
         {
+
         }
     }
 }

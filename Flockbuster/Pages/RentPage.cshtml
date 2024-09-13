@@ -1,0 +1,106 @@
+﻿@page
+@model Flockbuster.Pages.RentPageModel
+@{
+}
+<div class="RentpageOuterBox">
+    <div class="BannerBox">
+        <form class="SearchForm" method="get">
+            <input placeholder="Search" asp-for="SearchString" type="text" />
+
+            <select asp-for="SelectedCategory">
+                <option value="">Categories</option>
+                @foreach (var category in Model.AvailableCategories)
+                {
+                    //<p>@category</p>
+                    <option value="@category">@category</option>
+                }
+            </select>
+            <button type="submit"Search>Search</button>
+        </form>
+        <div class="AllObjectsBox">
+            
+            
+                @foreach (var rentalObject in Model.rentalObjects)
+                {
+                    <div class="EachBox">
+
+                        <div>
+                            <label class="Label1">ID:@rentalObject.ItemID</label>
+                        </div>
+                        <div>
+                            <h4 class="MovieTitle">@rentalObject.Titel</h4>
+                        </div>
+                        <div>
+                            <label class="LabelForCategories">
+                                @if (rentalObject.Category != null && rentalObject.Category.Any())
+                                {
+                                    @foreach (var category in rentalObject.Category)
+                                    {
+                                        @category.ToString()
+                                        @if (category != rentalObject.Category.Last())
+                                        {
+                                            <text>, </text>
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    <text>No categories available</text>
+                                }
+                            </label>
+                        </div>
+                        <div>
+                            <img class="ROImages" src="/images/moviePics/@(rentalObject.ItemID).jpg" />
+                        </div>
+                        <div>
+                            <label class="">
+                                @(
+                                    rentalObject.Instructor
+                                    )
+                            </label>
+                        </div>
+                        <div>
+                            <label class="">
+                                @(
+                                    rentalObject.ReleaseYear
+                                    )
+                            </label>
+                        </div>
+                        <div>
+                            @if (rentalObject.InStock is true)
+                            {
+                                <label class="InstockLabel">Instock</label>
+                            }
+                            else
+                            {
+                                <label class="InstockLabel">Not Instock</label>
+                                <label class="InstockAgain">
+                                    Estimated Returndate: @(
+                        rentalObject.ReturnDate
+                        )
+                                </label>
+                            }
+
+                        </div>
+                        <div>
+                            <label class="Label4">
+                                @(
+                                    rentalObject.Price
+                                    )DKK
+                            </label>
+                        </div>
+                        @if (rentalObject.InStock)
+                        {
+                            <form method="post">
+                                <input type="hidden" name="ItemID" value="@rentalObject.ItemID" />
+                                <button style="border-radius: 20px; width:90px; margin-bottom: 8px;" type="submit">
+                                    Rent
+                                </button>
+                            </form>
+                        }
+                    </div>
+                }
+            
+        </div>
+    </div>
+</div>

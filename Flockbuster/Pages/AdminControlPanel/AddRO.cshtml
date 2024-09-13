@@ -1,0 +1,40 @@
+﻿@page
+@using Flockbuster.Services.Models;
+@model Flockbuster.Pages.AdminControlPanel.AddROModel
+@{
+}
+
+<div class="AddOuterBox">
+    <div class="AddSecondBox">
+        <form class="FillOutFormBox" method="post">
+            <label>Fill out the form</label>
+            <input asp-for="@Model.NewRO.Titel" placeholder="Title:" />
+            <input asp-for="@Model.NewRO.ReleaseYear" placeholder="Release year:" />
+            <input asp-for="@Model.NewRO.Instructor" placeholder="Instructor:" />
+            <input asp-for="@Model.NewRO.Price" placeholder="Price:" />
+            <div>
+                <label> Is this Object Currently In Stock</label>
+                <input asp-for="@Model.NewRO.InStock" type="checkbox" />
+            </div>
+
+            <div class="CategoryBox">
+                <label>Choose category</label>
+                <div class="Checkboxes">
+                    @foreach (var category in Enum.GetValues(typeof(Category)))
+                    {
+                        <div class="CheckboxItem">
+                            <input type="checkbox" name="selectedCategories" value="@category" />
+                            <label>@category</label>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div>
+                <button type="submit">
+                    Add Object
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+﻿@page
+@model Flockbuster.Pages.AdminControlPanel.OccupiedObjectsPageModel
+@{
+}
+
+<div class="RentpageOuterBox">
+    <div class="BannerBox">
+        <div class="AllObjectsBox">
+            @foreach (var rentalObject in Model.ListOfRO)
+            {
+                <div class="EachBox">
+                    <div>
+                        <label class="Label1">ID:@rentalObject.ItemID</label>
+                    </div>
+                    <div>
+                        <label class="Label2">@rentalObject.Titel</label>
+                    </div>
+                    <div>
+                        <label class="Label3"> Expected returndate @rentalObject.ReturnDate</label> 
+                    </div>
+                    <div>
+                        <img class="ROImages" src="/images/moviePics/@(rentalObject.ItemID).jpg" />
+                    </div>
+                    <div>
+                        <label class="Label4">Loaning User ID: @(rentalObject.LoaningNow)</label>
+                    </div>
+                    <div>
+                        <label class="Label5">@(rentalObject.Price)DKK</label>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

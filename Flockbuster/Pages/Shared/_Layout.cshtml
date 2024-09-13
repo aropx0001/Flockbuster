@@ -5,12 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Flockbuster</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/AddROStyle.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/AdminPageStyle.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/ContactStyle.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/DeleteROStyle.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/EditROStyle.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Index.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/LoginStyle.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/OccupiedObjectsStyle.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/ProfileStyle.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/RentPageStyle.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/ReturnPageStyle.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/SignUpStyle.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Flockbuster.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/UserOverviewStyle.css" asp-append-version="true" />
+
+    
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-navbar border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">Flockbuster</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -23,8 +37,40 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/RentPage">Rent</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/ReturnPage">Return</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/ContactPage">Contact</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            @if (Context.Session.GetInt32("ID") is not null && Context.Session.GetInt32("Type") is 1)
+                            {
+                                <a class="nav-link text-dark" asp-area="" asp-page="/AdminPage">AdminPage</a>
+                            }
+                            
+                        </li>
+                        <li class="nav-item">
+                            @if (Context.Session.GetInt32("ID") is not null)
+                            {
+                                <a class="nav-link text-dark" asp-area="" asp-page="/ProfilePage">My Profile</a>
+                            }
+                        </li>
+                        <li class="nav-item">
+                            @if (Context.Session.GetInt32("ID") is null)
+                            {
+                                <a class="nav-link text-dark" asp-area="" asp-page="/LoginPage">Login</a>
+                            }
+                            else
+                            {
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Logout">Logout</a>
+                            }
+                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -36,11 +82,6 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - Flockbuster - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

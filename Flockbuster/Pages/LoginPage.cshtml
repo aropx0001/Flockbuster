@@ -1,0 +1,36 @@
+﻿@page
+@model Flockbuster.Pages.LoginPageModel
+@{
+}
+
+<div class="LoginOuterBox">
+    <div class="ImgBox">
+        <img src="./Images/Fuckbuster.png" height="469" width="500" />
+    </div>
+    <div class="LoginBox">
+        <form method="post">
+            <div class="LoginBoxesDetails">
+                
+                <div class="UnameBox">
+                    <label for="uname"><b>Username</b> </label>
+                    <input asp-for="@Model.Username" placeholder="Enter Username" required />
+                </div>
+                <div class="PasswordBox">
+                    <label for="psw"><b>Password</b></label>
+                    <input asp-for="Password" type="password" placeholder="Enter Password" required />
+                </div>
+                <button class="LoginButton" type="submit">Login </button>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember" /> Remember me
+                </label>
+
+            </div>
+        </form>
+        <div class="SignUpBox">
+            <a class="SignUpButton" href="/Sign Up" target="_blank" title="Open Sign Up page">
+                Sign Up
+            </a>
+            
+        </div>
+    </div>
+</div>

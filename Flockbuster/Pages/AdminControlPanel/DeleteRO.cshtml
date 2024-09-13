@@ -1,0 +1,31 @@
+﻿@page
+@model Flockbuster.Pages.AdminControlPanel.DeleteROModel
+@using Flockbuster.Services.Models
+@{
+}
+
+<div class="DeleteOuterBox">
+    <div class="DeleteSecondBox">
+        <form class="DeleteFillOutFormBox" method="post">
+            <label>Insert ID</label>
+            <input asp-for="@Model.ItemID" placeholder="ID" />
+            <button asp-page-handler="GetID" type="submit"> Find RO </button>
+        </form>
+
+        @if (Model.FoundRO is not null)
+        {
+            <form class="DeleteFillOutFormBox" method="post">
+                <input type="hidden" asp-for="ItemID">
+                <div>
+
+                    <h5>ItemID: @Model.FoundRO.ItemID</h5>
+                    <h5>Movie: @Model.FoundRO.Titel</h5> 
+                </div>
+                <div class="DeleteButton">
+                    <button asp-page-handler="Delete" type="submit"> Delete Objects </button>
+                </div>
+
+            </form>
+        }
+    </div>
+</div>

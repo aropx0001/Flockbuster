@@ -1,0 +1,20 @@
+﻿body {
+}
+
+.OuterSignUpBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 1296px;
+    height: 600px;
+    
+}
+
+.SignUpBox > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    margin-top: 50px;
+}

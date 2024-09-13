@@ -1,0 +1,46 @@
+﻿@page
+@model Flockbuster.Pages.AdminControlPanel.UserOverviewPageModel
+@using Flockbuster.Services.Models
+@{
+}
+<div>
+    <table class="arrowes-table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Type</th>
+                <th>History</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var user in Model.UserList)
+            {
+                <tr>
+                    <td>@user.accountID</td>
+                    <td>@user.firstname</td>
+                    <td>@user.lastname</td>
+                    <td>@user.Type</td>
+                    @if (!user.History.Any())
+                    {
+                        <td height="40px">No history</td>
+                    }
+                    else
+                    {
+                        @foreach (var neverForget in user.History)
+                        {
+                            <td class="HistoryTD" height="40px">
+                                @neverForget.Title
+                                @neverForget.RentDate
+                                @neverForget.ReturnDate
+                            </td>
+                        }
+                    }
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

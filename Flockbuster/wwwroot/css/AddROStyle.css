@@ -1,0 +1,44 @@
+﻿body {
+}
+
+.AddOuterBox{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-top:200px;
+    
+}
+
+.AddSecondBox{
+    display:flex;
+    flex-direction:row;
+    gap:10px;
+    justify-content:center;
+    align-items:center;
+    gap:50px;
+}
+
+.FillOutFormBox{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.CategoryBox{
+    display:flex;
+    flex-direction:column;
+    gap: 10px;
+    
+}
+
+.Checkboxes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.CheckboxItem {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}

@@ -1,0 +1,43 @@
+﻿@page
+@model Flockbuster.Pages.AdminPageModel
+@{
+}
+
+<div class="AdminOuterBox">
+    <h3>Admin dashboard</h3>
+    <div class="MenuesBox">
+
+        <div class="RentBox">
+            <h5>Rent page</h5>
+            <a class="AddROButton btn btn-primary" href="/AdminControlPanel/AddRO" title="Open add rentalobject page">
+                Add RO
+            </a>
+            <a class="EditROButton btn btn-primary" href="/AdminControlPanel/EditRO" title="Open edit rentalobject page">
+                Edit RO
+            </a>
+            <a class="DeleteROButton btn btn-primary" href="/AdminControlPanel/DeleteRO" title="Open delete rentalobject page">
+                Delete RO
+            </a>
+        </div>
+
+        <div class="UserBox">
+            <h5>User page</h5>
+            <a class="UserOverviewButton btn btn-primary" href="/AdminControlPanel/UserOverviewPage" title="Open user overview page">
+                Overview
+            </a>
+        </div>
+
+        <div class="OccupiedObjectsBox">
+            <h5>OccupiedObjects</h5>
+            <a class="OccupiedObjectsButton btn btn-primary" href="/AdminControlPanel/OccupiedObjectsPage" title="Open occupied objects page">
+                Overview
+            </a>
+        </div>
+    </div>
+    <div class="AdminSecondBox">
+        <div Class="AdminThirdBox">
+            <div>
+            </div>
+        </div>
+    </div>
+</div>

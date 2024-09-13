@@ -1,0 +1,52 @@
+﻿@page
+@model Flockbuster.Pages.AdminControlPanel.EditROModel
+@using Flockbuster.Services.Models
+@{
+}
+
+<div class="EditOuterBox">
+    <div class="EditSecondBox">
+        <form class="EditFillOutFormBox" method="post">
+            <label>Insert ID</label>
+            <input asp-for="@Model.ItemID" placeholder="ID" />
+            <button asp-page-handler="GetID" type="submit"> Find RO </button>
+        </form>
+
+        <form class="EditFillOutFormBox" method="post">
+            
+
+            @if (Model.FoundRO is not null)
+            {
+                <label>Edit details</label>
+                <input asp-for="@Model.NewRO.ItemID" hidden />
+                <input asp-for="@Model.NewRO.Titel" placeholder="Title:" />
+                <input asp-for="@Model.NewRO.ReleaseYear" placeholder="Release year:" value="@Model.FoundRO.ReleaseYear" />
+                <input asp-for="@Model.NewRO.Instructor" placeholder="Instructor:" value="@Model.FoundRO.Instructor" />
+                <input asp-for="@Model.NewRO.Price" placeholder="Price:" value="@Model.FoundRO.Price" />
+
+
+                <div>
+                    <label>In Stock?</label>
+                    <input asp-for="NewRO.InStock" type="checkbox" />
+                </div>
+
+                <div class="EditCategoryBox">
+                    <label>Choose category</label>
+                    <div class="EditCheckboxes">
+                        @foreach (var category in Enum.GetValues(typeof(Category)).Cast<Category>())
+                        {
+                            <div class="EditCheckboxItem">
+                                <input type="checkbox" name="SelectedCategories" value="@category"
+                               @(Model.FoundRO != null && Model.FoundRO.Category.Contains(category) ? "checked" : "") />
+                                <label>@category</label>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div>
+                    <button asp-page-handler="Edit" type="submit"> Edit Object </button>
+                </div>
+            }
+        </form>
+    </div>
+</div>

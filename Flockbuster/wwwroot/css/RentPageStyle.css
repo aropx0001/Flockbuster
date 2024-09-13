@@ -1,0 +1,52 @@
+﻿.RentpageOuterBox {
+    display: flex;
+    flex-direction: column; 
+}
+
+.BannerBox {
+    display: flex;
+    flex-direction: column; 
+    gap:5px;
+}
+
+.AllObjectsBox {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 10px; 
+}
+
+.EachBox {
+    display: flex;
+    background-color: linen;
+    flex-direction: column;
+    margin: 5px;
+    gap: 7px;
+    flex: 1 1 calc(25% - 10px);
+    max-width: 18%;
+    box-sizing: border-box;
+    border-radius:3px;
+    text-align:center;
+}
+
+.ROImages {
+    height: 260px;
+    width: 100%;
+}
+
+.MovieTitle {
+    display: inline-block;
+    text-align:center;
+}
+
+.LabelForCategories {
+    display: inline-block;
+    height: 72px;
+    max-width: 220px;
+    text-align: center;
+}
+
+.SearchForm{
+    display: flex;
+    justify-content: center;
+    gap:5px;
+}

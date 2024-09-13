@@ -1,0 +1,85 @@
+﻿@page
+@model Flockbuster.Pages.ProfilePageModel
+@{
+}
+
+<div class="ProfileOuterBox">
+    <div class="ProfileBox">
+        <div id="ProfileInfoBox">
+            <div>
+                <h4>Profile Information</h4>
+                <div>
+                    <label>UserID: @Model.User.accountID</label>
+                </div>
+                <div>
+                    <label>Name: @Model.User.firstname @Model.User.lastname</label>
+                </div>
+                <div>
+                    <label>Type: @Model.User.Type</label>
+                </div>
+                <div>
+                    <label>Balance: @(Model.User.balance) DKK</label>
+                </div>
+            </div>
+            <div>
+                <img id="PP" src="./Images/UserImg/@(Model.User.accountID).jpg"/>
+            </div>
+        </div>
+        <div id="BottumProfileBox">
+            <div id="ListMyLoans">
+                <h5>Your rental history</h5>
+                <table class="ProfileTable">
+                    <thead class="ProfileTableHead">
+                        <tr>
+                            <th style="width:40px">ID</th>
+                            <th style="width:80px">Price</th>
+                            <th style="width:145px">Rentdate</th>
+                            <th style="width:145px">Returndate</th>
+                        </tr>
+                    </thead>
+                </table>
+                <div class="ProfileBodyBox">
+                    <table>
+                        <tbody class="ProfileTableBody">
+                            @if (Model.User.History is null)
+                            {
+                                <tr>
+                                    <td style="width:599px">No items on list </td>
+                                </tr>
+                            }
+                            else
+                            {
+                                
+                                @foreach (var rentalObject in Model.User.History)
+                                {
+                                    <tr>
+                                        <td style="width:50px;">@rentalObject.ItemID</td>
+                                        <td style="width:100px;">@rentalObject.Price DKK</td>
+                                        <td style="width:180px;">@rentalObject.RentDate</td>
+                                        <td style="width:181px;">@rentalObject.ReturnDate</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ProfileButtons">
+        <form asp-page-handler="UpdateBalance" method="post">
+            <div>
+                <input asp-for="@Model.Balance" placeholder="Add balance" required />
+                <button class="AddBalanceBtn" type="submit"> Confirm</button>
+            </div>
+        </form>
+
+        <form asp-page-handler="NameChange" method="post">
+            <div>
+                <input asp-for="@Model.Firstname" placeholder="New firstname" required />
+                <input asp-for="@Model.Lastname" placeholder="New Lastname" required />
+                <button class="AddBalanceBtn" type="submit"> Confirm</button>
+            </div>
+        </form>
+    </div>
+</div>

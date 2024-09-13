@@ -1,0 +1,21 @@
+﻿body {
+}
+
+.IndexBox{
+    display:flex;
+    text-align:center;
+    justify-content:center;
+    flex-direction:column;
+}
+
+.IndexImgBox{
+    display:flex;
+    justify-content:center;
+    margin-top:10px;
+}
+
+.Slogan{
+    display:flex;
+    justify-content:center;
+    margin-top:15px;
+}

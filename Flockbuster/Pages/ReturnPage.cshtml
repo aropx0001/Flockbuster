@@ -1,0 +1,66 @@
+﻿@page
+@model Flockbuster.Pages.ReturnPageModel
+@using Flockbuster.Services.Models
+@{
+}
+
+<div class="ReturnOuterBox">
+    <div id="ListMyLoans">
+        <h5>Your rentals</h5>
+        <table class="ProfileTable">
+            <thead class="ProfileTableHead">
+                <tr>
+                    <th style="width:40px">ID</th>
+                    <th style="width:80px">Price</th>
+                    <th style="width:145px">Rentdate</th>
+                    <th style="width:145px">Returndate</th>
+                </tr>
+            </thead>
+        </table>
+        <div class="ProfileBodyBox">
+            <table>
+                <tbody class="ProfileTableBody">
+                    @if (Model.user.MyLoans is null)
+                    {
+                        <tr>
+                            <td style="width:599px">No items on list </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var rentalObject in Model.user.MyLoans)
+                        {
+                            <tr>
+                                <td style="width:50px;">@rentalObject.ItemID</td>
+                                <td style="width:100px;">@rentalObject.Price DKK</td>
+                                <td style="width:180px;">@rentalObject.RentDate</td>
+                                <td style="width:181px;">@rentalObject.ReturnDate</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="ReturnSecondBox">
+        <form class="ReturnFillOutFormBox" method="post">
+            <select name="ItemID">
+                @if (Model.user.MyLoans != null && Model.user.MyLoans.Any())
+                {
+                    <option>Select rental item</option>
+                    @foreach (RentalObject rentalObject in Model.user.MyLoans)
+                    {
+                        <option value="@rentalObject.ItemID">@rentalObject.Titel</option>
+                    }
+                }
+                else
+                {
+                    <option>No rental items available</option>
+                }
+            </select>
+            <div class="ReturnButton">
+                <button type="submit">Return Objects</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+﻿body {
+}
+
+.AdminOuterBox{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    zoom:125%;
+}
+
+.MenuesBox{
+    display:flex;
+    flex-direction:row;
+    gap:100px;
+}
+
+.RentBox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.UserBox{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.OccupiedObjectsBox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-primary{
+    display:flex;
+    width:120px;
+}
