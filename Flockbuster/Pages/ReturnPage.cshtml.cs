@@ -56,6 +56,7 @@ namespace Flockbuster.Pages
 
             //reload changes
             rentalObjects = _adminServices.ListOfRentalObjects;
+            
 
             return RedirectToPage("/ReturnPage");
         }

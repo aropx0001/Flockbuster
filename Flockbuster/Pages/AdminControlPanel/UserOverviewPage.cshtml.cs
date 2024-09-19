@@ -25,7 +25,6 @@ namespace Flockbuster.Pages.AdminControlPanel
         public void OnGet()
         {
             UserList = _adminServices.UserList;
-
         }
 
         

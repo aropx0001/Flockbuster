@@ -16,18 +16,20 @@ namespace Flockbuster.Pages
             _adminServices = adminServices;
         }
 
-        public User User { get; set; } = new();
+        [BindProperty]
+        public User User { get; set; }
 
         [BindProperty]
-        [MaxLength(20)]
+        [Range(0, double.MaxValue)]
+        public double? Balance { get; set; }
+
+        [BindProperty]
+        [MaxLength(20, ErrorMessage = "Max 20 characters")]
         public string Firstname { get; set; }
 
         [BindProperty]
-        [MaxLength(20)]
+        [MaxLength(20, ErrorMessage = "Max 20 characters")]
         public string Lastname { get; set; }
-
-        [BindProperty]
-        public double? Balance { get; set; }
 
         public IActionResult OnGet()
         {
@@ -40,6 +42,10 @@ namespace Flockbuster.Pages
 
             User = _adminServices.IdentifyUserByID(foundID.Value);
             User.History = _adminServices.GetHistoryFromUser(foundID.Value);
+
+            Firstname = User.firstname;
+            Lastname = User.lastname;
+
             return Page();
         }
 
@@ -47,30 +53,18 @@ namespace Flockbuster.Pages
         {
             int? foundID = HttpContext.Session.GetInt32("ID");
 
-            if (foundID is null)
-            {
+            if (foundID == null)
                 return Redirect("/LoginPage");
-            }
 
-            if (!ModelState.IsValid)
+            User = _adminServices.IdentifyUserByID(foundID.Value);
+
+            if (Balance.HasValue)
             {
-                User = _adminServices.IdentifyUserByID(foundID.Value);
-
-                if (Balance.HasValue)
-                {
-                    _adminServices.AddBalance(User.accountID, Balance);
-                }
-
-                _adminServices.UpdateUser(User);
-
-                User = _adminServices.IdentifyUserByID(foundID.Value);
-
-                return RedirectToPage();
+                double? balance = _adminServices.AddBalanceV2(User.accountID, Balance.Value);
             }
 
             return Page();
         }
-
 
         public IActionResult OnPostNameChange()
         {
@@ -80,18 +74,21 @@ namespace Flockbuster.Pages
             {
                 return Redirect("/LoginPage");
             }
+            Balance = 0;
 
             if (ModelState.IsValid)
             {
-                User = _adminServices.IdentifyUserByID(foundID.Value);
+                var userToUpdate = _adminServices.IdentifyUserByID(foundID.Value);
+                userToUpdate.firstname = Firstname;
+                userToUpdate.lastname = Lastname;
 
-                User.firstname = Firstname;
-                User.lastname = Lastname;
-                
-                _adminServices.UpdateUser(User);
+                _adminServices.UpdateUserName(userToUpdate);
 
                 return RedirectToPage();
             }
+
+            User = _adminServices.IdentifyUserByID(foundID.Value);
+            User.History = _adminServices.GetHistoryFromUser(foundID.Value);
 
             return Page();
         }

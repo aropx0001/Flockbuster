@@ -51,15 +51,14 @@ namespace Flockbuster.Services
             return userID;
         }
 
-        public void UpdateUser(User updatedUser)
+        public void UpdateUserName(User updatedUser)
         {
-            var user = IdentifyUserByID(updatedUser.accountID);
+            User user = UserList.FirstOrDefault(x => x.accountID == updatedUser.accountID);
 
             if (user != null)
             {
                 user.firstname = updatedUser.firstname;
                 user.lastname = updatedUser.lastname;
-                user.balance = updatedUser.balance;
             }
         }
 
@@ -90,6 +89,16 @@ namespace Flockbuster.Services
 
             user.balance += balance;
             return user.balance;
+        }
+
+        public double? AddBalanceV2(int id, double? balance)
+        {
+            if (balance < 0 || balance > 10000)
+            {
+                return 0;
+            }
+            double? newBalance = UserList.Find(x => x.accountID == id).balance += balance;
+            return newBalance;
         }
 
         public User IdentifyUserByID(int userID)

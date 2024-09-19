@@ -14,7 +14,7 @@ namespace Flockbuster.Services.Models
         public string username;
         public string password;
         public UserType Type;
-        public double? balance = 100000;
+        public double? balance = 0;
         public List<RentalObject> MyLoans;
         public List<NeverForget>? History;
 
@@ -30,7 +30,8 @@ namespace Flockbuster.Services.Models
 
         public User()
         {
-
+            MyLoans = new List<RentalObject>();
+            History = new List<NeverForget>();
         }
     }
 

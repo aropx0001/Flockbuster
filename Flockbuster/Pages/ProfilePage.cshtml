@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div>
-                <img id="PP" src="./Images/UserImg/@(Model.User.accountID).jpg"/>
+                <img id="PP" src="./Images/UserImg/@(Model.User.accountID).jpg" />
             </div>
         </div>
         <div id="BottumProfileBox">
@@ -41,15 +41,14 @@
                 <div class="ProfileBodyBox">
                     <table>
                         <tbody class="ProfileTableBody">
-                            @if (Model.User.History is null)
+                            @if (!Model.User.History.Any())
                             {
                                 <tr>
-                                    <td style="width:599px">No items on list </td>
+                                    <td style="width:599px">No items on list</td>
                                 </tr>
                             }
                             else
                             {
-                                
                                 @foreach (var rentalObject in Model.User.History)
                                 {
                                     <tr>
@@ -67,18 +66,18 @@
         </div>
     </div>
     <div id="ProfileButtons">
-        <form asp-page-handler="UpdateBalance" method="post">
+        <form method="post" asp-page-handler="UpdateBalance">
             <div>
-                <input asp-for="@Model.Balance" placeholder="Add balance" required />
-                <button class="AddBalanceBtn" type="submit"> Confirm</button>
+                <input asp-for="Balance" placeholder="Add balance [10K limit]" />
+                <button class="AddBalanceBtn" type="submit">Confirm</button>
             </div>
         </form>
 
-        <form asp-page-handler="NameChange" method="post">
+        <form method="post" asp-page-handler="NameChange">
             <div>
-                <input asp-for="@Model.Firstname" placeholder="New firstname" required />
-                <input asp-for="@Model.Lastname" placeholder="New Lastname" required />
-                <button class="AddBalanceBtn" type="submit"> Confirm</button>
+                <input asp-for="Firstname" placeholder="New firstname" />
+                <input asp-for="Lastname" placeholder="New Lastname" />
+                <button class="AddBalanceBtn" type="submit">Confirm</button>
             </div>
         </form>
     </div>

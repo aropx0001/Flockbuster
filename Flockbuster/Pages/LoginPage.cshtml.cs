@@ -26,10 +26,8 @@ namespace Flockbuster.Pages
         public void OnGet()
         {
         }
-
         public IActionResult OnPost()
         {
-            // Check if the model state is valid
             if (ModelState.IsValid)
             {
                 User foundUser = _adminServices.HtmlLogin(Username.ToLower(), Password);
@@ -42,8 +40,6 @@ namespace Flockbuster.Pages
                     return RedirectToPage("/ProfilePage");
                 }
             }
-
-            // Return the page with validation errors if the model state is not valid or user not found
             return Page();
         }
     }
