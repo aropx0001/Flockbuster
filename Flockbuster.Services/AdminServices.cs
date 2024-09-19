@@ -21,13 +21,13 @@ namespace Flockbuster.Services
 
         public AdminServices(string firmanavn)
         {
-            UserList.Add(new Admin(1, "Aron", "Palsson", "aropx0001", "gedepis"));
-            UserList.Add(new Admin(2, "Emil", "Palsson", "emil0001", "gedepis"));
-            UserList.Add(new Admin(3, "Thomas", "Palsson", "thomas0001", "gedepis"));
-            UserList.Add(new Admin(4, "Brian", "Palsson", "brian0001", "gedepis"));
-            UserList.Add(new Standard(101, "Mohammed", "Mosleh", "mohammed", "gedepis"));
-            UserList.Add(new Standard(102, "Mhillip", "Mosleh", "phillip", "gedepis"));
-            UserList.Add(new Standard(103, "Max", "Mosleh", "max", "gedepis"));
+            UserList.Add(new Admin(1, "Aron", "Palsson", "aropx0001", "1234"));
+            UserList.Add(new Admin(2, "Emil", "Palsson", "emil0001", "1234"));
+            UserList.Add(new Admin(3, "Thomas", "Palsson", "thomas0001", "1234"));
+            UserList.Add(new Admin(4, "Brian", "Palsson", "brian0001", "1234"));
+            UserList.Add(new Standard(101, "Mohammed", "Mosleh", "mohammed", "1234"));
+            UserList.Add(new Standard(102, "Mhillip", "Mosleh", "phillip", "1234"));
+            UserList.Add(new Standard(103, "Max", "Mosleh", "max", "1234"));
 
             this.firmanavn = firmanavn;
             LoadRO();
